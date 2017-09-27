@@ -1,12 +1,15 @@
-var express = require('express');
-var router = express.Router();
+
+var express = require('express'),
+router = express.Router(),
+repo = require('../models/postRepository');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var blogPosts = { posts: [] };
+  var allPosts = repo.getPosts();
+ // var blogPosts = { posts: [] };
 
-  blogPosts.posts.push({
-    id: "first-post",
+ /* blogPosts.posts.push({
+    id: "123",
     title: "My First Blog Post",
     author: {
       fName: "Jeff",
@@ -24,13 +27,17 @@ router.get('/', function(req, res, next) {
       email: "jeffa@codecareeracademy.com"
     },
     content: "<h1>Hello, Again World!</h1>"
-  });
+  });*/
 
-  res.render("index", blogPosts);
+  //var allPosts = repo.getPosts();
+  res.render('index', {allPosts: allPosts});
 
   // res.render('index', { title: 'My Blog',
   //   author: "Jeff",
   //   randomNumber: Math.random() });
 });
+
+
+
 
 module.exports = router;
