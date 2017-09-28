@@ -2,6 +2,7 @@
 var express = require('express'),
 router = express.Router(),
 repo = require('../models/postRepository');
+repo.loadPosts();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
